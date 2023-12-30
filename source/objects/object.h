@@ -28,7 +28,7 @@ namespace graphics_abstraction
 		virtual object* build_impl(api*& api) = 0;						//Implement in implementation
 																		//Create object
 
-		virtual object* build(api* api) final
+		virtual inline object* build(api* api) final
 		{
 			auto* obj = build_abs(api);
 			if (obj != nullptr)
