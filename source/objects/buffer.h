@@ -36,12 +36,12 @@ namespace graphics_abstraction
 		}
 	public:
 		//returns buffer size
-		virtual uint32_t get_size() final
+		virtual inline uint32_t get_size() final
 		{
 			return size;
 		}
 		//return buffer type
-		virtual graphics_abstraction::buffer_type get_buffer_type() final
+		virtual inline graphics_abstraction::buffer_type get_buffer_type() final
 		{
 			return buffer_type;
 		}

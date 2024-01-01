@@ -32,7 +32,7 @@ namespace graphics_abstraction
 			creating resources
 		*/
 
-		virtual object* build(builder* builder, bool destroy_builder = true) final
+		virtual inline object* build(builder* builder, bool destroy_builder = true) final
 		{
 			auto obj = builder->build(this);
 			if (destroy_builder)
@@ -40,7 +40,7 @@ namespace graphics_abstraction
 			return obj;
 		}
 
-		virtual bool free(object* obj) final
+		virtual inline bool free(object* obj) final
 		{
 			if (internal::is_binded(current_pipeline, obj))
 				dirty = true;
@@ -86,7 +86,7 @@ namespace graphics_abstraction
 		/*
 			drawing
 		*/
-		virtual bool bind(object* obj) final
+		virtual inline bool bind(object* obj) final
 		{
 			if (obj == nullptr)
 			{
@@ -98,7 +98,7 @@ namespace graphics_abstraction
 			return true;
 		}
 
-		virtual bool apply_bindings() final
+		virtual inline bool apply_bindings() final
 		{
 			current_pipeline = modified_pipeline;
 			dirty = !apply_bindings_impl();
