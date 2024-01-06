@@ -32,7 +32,7 @@ namespace graphics_abstraction
 			creating resources
 		*/
 
-		virtual inline object* build(builder* builder, bool destroy_builder = true) final
+		virtual object* build(builder* builder, bool destroy_builder = true) final
 		{
 			auto obj = builder->build(this);
 			if (destroy_builder)
@@ -40,7 +40,7 @@ namespace graphics_abstraction
 			return obj;
 		}
 
-		virtual inline bool free(object* obj) final
+		virtual bool free(object* obj) final
 		{
 			if (internal::is_binded(current_pipeline, obj))
 				dirty = true;
@@ -86,7 +86,7 @@ namespace graphics_abstraction
 		/*
 			drawing
 		*/
-		virtual inline bool bind(object* obj) final
+		virtual bool bind(object* obj) final
 		{
 			if (obj == nullptr)
 			{
@@ -98,7 +98,7 @@ namespace graphics_abstraction
 			return true;
 		}
 
-		virtual inline bool apply_bindings() final
+		virtual bool apply_bindings() final
 		{
 			current_pipeline = modified_pipeline;
 			dirty = !apply_bindings_impl();
@@ -127,10 +127,6 @@ namespace graphics_abstraction
 		}
 
 		virtual bool set_screen_size(int width, int height) = 0;
-
-		virtual bool clear_current_framebuffer_color_buffer(float r, float g, float b, float a) = 0;
-		virtual bool clear_current_framebuffer_depth_buffer() = 0;
-		virtual bool clear_current_framebuffer_stencil_buffer() = 0;
 		
 		virtual framebuffer* get_default_framebuffer() = 0;
 		virtual bool set_enabled(functionalities functionality, bool enabled) = 0;
